@@ -2,16 +2,44 @@ import type { NextPage } from 'next'
 import styles from '../styles/Home.module.css'
 import {useForm} from "react-hook-form"
 
+interface UploadInputFormType {
+    brand:string;
+    capsuleName:string;
+    flavor?:string;
+    body?:number;
+    acidy?:number;
+    color:string;
+    recommendation:string;
+    url:string
+}
+
 
 const Upload: NextPage = () => {
 
     const {register, watch,handleSubmit, reset} = useForm()
     // console.log(watch())
 
-    const onValid = (data) =>{
-        console.log("제출된 데이터는",data)
+    const onValid = (data:UploadInputFormType) =>{
+        console.log(data)
+
+        fetch("api/capsule",{
+            method:"POST",
+            body:JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+
     }
 
+        // fetch("api/hello",{
+        //     method: "POST",
+        //     body:JSON.stringify(data),
+        //     headers: {
+        //         "Content-Type": "application/json"
+        //     }
+        // }).then(response=>response.json())
+        // .then(data=>{console.log(data)})
     return (
         <div className={styles.container}>
             캡슐 정보를 입력하세요
@@ -31,14 +59,18 @@ const Upload: NextPage = () => {
                     <label>
                         브랜드
                     </label>
-                    <input/>
+                    <input
+                        {...register("brand")}
+                    />
                 </div>
 
                 <div>
                     <label>
                         향과 맛
                     </label>
-                    <input/>
+                    <input
+                        {...register("flavor")}
+                    />
                 </div>
 
                 <div>
@@ -46,6 +78,7 @@ const Upload: NextPage = () => {
                         산미
                     </label>
                     <input
+                        {...register("acidy")}
                         placeholder='산미 정도를 입력해 주세요'
                         type='number'
                     />
@@ -55,25 +88,35 @@ const Upload: NextPage = () => {
                     <label>
                         바디감
                     </label>
-                    <input/>
+                    <input
+                        {...register("body")}
+                        placeholder='바디감의 정도를 입력해 주세요'
+                        type='number'
+                    />
                 </div>
                 <div>
                     <label>
                         캡슐컬러
                     </label>
-                    <input/>
+                    <input
+                        {...register("color")}
+                    />
                 </div>
                 <div>
                     <label>
                         추천하는 레시피
                     </label>
-                    <input/>
+                    <input
+                        {...register("recommendation")}
+                    />
                 </div>
                 <div>
                     <label>
                         구매링크
                     </label>
-                    <input/>
+                    <input
+                        {...register("url")}
+                    />
                 </div>
 
                 <button>

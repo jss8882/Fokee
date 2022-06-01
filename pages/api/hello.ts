@@ -24,6 +24,8 @@ export default function handler(
   //   console.log(data)
   // })
 
+  console.log("HIHI")
+
   const requestedCoffee = client.capsule.findUnique({
     where:{
       id:1
