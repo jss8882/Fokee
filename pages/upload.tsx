@@ -21,7 +21,7 @@ const upload: NextPage = () => {
                     </label>
                     <input
                         placeholder='산미를 입력주세요'
-                        type="number"
+                        type="color"
                     />
                 </div>
 
