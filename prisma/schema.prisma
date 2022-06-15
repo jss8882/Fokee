@@ -2,12 +2,15 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
 }
 
 
@@ -15,10 +18,12 @@ model Capsule{
   id             Int      @id @default(autoincrement())
   brand          String     
   capsuleName    String
-  flavor         String[]     
-  body           Int
-  acidy          Int
+  flavor         String?
+  body           Int?
+  acidy          Int?
+  color          String?
   recommendation String
+  url            String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
