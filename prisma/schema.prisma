@@ -1,6 +1,5 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["referentialIntegrity"]
@@ -13,16 +12,28 @@ datasource db {
   referentialIntegrity = "prisma"
 }
 
-
 model Capsule{
   id             Int      @id @default(autoincrement())
   brand          String     
   capsuleName    String
+<<<<<<< HEAD
   flavor         String?
   body           Int?
   acidy          Int?
   color          String?
   recommendation String
+=======
+  flavor         String
+<<<<<<< HEAD
+  body           Int
+  acidy          Int
+=======
+  body           Int?
+  acidy          Int?
+>>>>>>> JYfront
+  recommendation String
+  color          String
+>>>>>>> 8962bfde4323b3fbe63cf5483a5240d5524520fe
   url            String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
