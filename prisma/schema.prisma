@@ -17,9 +17,16 @@ model Capsule{
   brand          String     
   capsuleName    String
   flavor         String
+<<<<<<< HEAD
   body           Int
   acidy          Int
+=======
+  body           Int?
+  acidy          Int?
+>>>>>>> JYfront
   recommendation String
+  color          String
+  url            String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
