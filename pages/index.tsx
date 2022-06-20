@@ -1,16 +1,41 @@
 import type { NextPage } from 'next'
 import "tailwindcss/tailwind.css";
 import Link from "next/link";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import BriefMemberProfile from '../components/BriefMemberProfile';
 import BriefCapsuleInfo from '../components/BriefCapsuleInfo';
 import { AiFillSetting } from 'react-icons/ai';
+import { Capsule } from '@prisma/client';
+
+interface CapsuleResponse {
+  ok:boolean;
+  capsules: Capsule[]
+}
 
 const Home: NextPage = () => {
 
   const [isCapsuleMode, setIsCapsuleMode] = useState(false);
   const [capsuleClick, setCapsuleClick] = useState(false);
+
+  const [capsulesInlab, setCapsulesInlab] = useState<Capsule[]>([])
+  // const [capsulesInlab, setCapsulesInlab] = useState([11,12])
+
+  useEffect(()=>{
+    console.log("now we fetch all capsule")
+
+    fetch("/api/capsule", {
+      method:"GET",
+    }).then(response=>response.json())
+    .then(data =>{
+      console.log(data)
+      setCapsulesInlab(data.capsules)
+    })
+
+
+
+  },[])
+
 
   const toogleMode = () => {
     setIsCapsuleMode(prev => !prev)
@@ -42,7 +67,7 @@ const Home: NextPage = () => {
           <a className="px-1 py-2 text-[#ECC392] text-[20px] font-semibold">CART</a>
         </Link>
         <Link href="/setting">
-          <a className="px-2 py-2 text-[#ECC392] text-[20px] font-light"><AiFillSetting/></a>
+          <a className="px-2 py-2 text-[#ECC392] text-[20px] font-light"><AiFillSetting /></a>
         </Link>
       </div>
       <div
@@ -61,29 +86,44 @@ const Home: NextPage = () => {
           위시리스트
         </button>
       </div>
-      {!isCapsuleMode ?
-          <BriefCapsuleInfo capsuleColor={"#F3B562"} capsuleName={"제일 맛있는 커피"}/>
+      {!isCapsuleMode ? (
+        <div>
+          {
+            capsulesInlab.map((capsule,index)=>{
+              console.log("capsule is ",capsule)
+              console.log("index is ",index)
+              return(
+                <BriefCapsuleInfo key={index} capsuleColor={capsule.color} capsuleName={capsule.capsuleName} />
+              )
+
+            })
+
+          }
+
+        </div>
+      )
+
         : <div className="flex flex-col items-center px-10 pb-20 bg-[#F5EFDF] opacity-33 h-[420px]">
-                <div className="py-5 flex w-[280px] justify-between">
-                    <label className=" text-[#5C4B51] font-semibold">
-                        캡슐 이름
-                    </label>
-                    <input className="bg-white"/>
-                </div>
-                <div className="py-5 flex w-[280px] justify-between">
-                    <label className="text-[#5C4B51] font-semibold">
-                        브랜드
-                    </label>
-                    <input className="bg-white"/>
-                </div>
-                <div className="pt-5 pb-20 flex w-[280px] justify-between">
-                    <label className="text-[#5C4B51] font-semibold">
-                        URL
-                    </label>
-                    <input className="bg-white"/>
-                </div>
-                <button className="bg-[#F3B562] rounded-full w-[150px] text-[20px] py-3 font-bold text-[#5C4B51]">SUBMIT</button>
-          </div>}
+          <div className="py-5 flex w-[280px] justify-between">
+            <label className=" text-[#5C4B51] font-semibold">
+              캡슐 이름
+            </label>
+            <input className="bg-white" />
+          </div>
+          <div className="py-5 flex w-[280px] justify-between">
+            <label className="text-[#5C4B51] font-semibold">
+              브랜드
+            </label>
+            <input className="bg-white" />
+          </div>
+          <div className="pt-5 pb-20 flex w-[280px] justify-between">
+            <label className="text-[#5C4B51] font-semibold">
+              URL
+            </label>
+            <input className="bg-white" />
+          </div>
+          <button className="bg-[#F3B562] rounded-full w-[150px] text-[20px] py-3 font-bold text-[#5C4B51]">SUBMIT</button>
+        </div>}
       <div
         style={{ visibility: !capsuleClick ? 'hidden' : 'visible' }}
       >
@@ -93,10 +133,10 @@ const Home: NextPage = () => {
       <div>
         <h1 className="text-4xl flex justify-center pt-10 pb-10 text-[#5C4B51] font-bold italic">members</h1>
         <div className="grid grid-cols-4 pt-8j items-center content-center">
-          <BriefMemberProfile name={"Sangsu"} position={"Boss"} backgroundColor={"#5C4B51"}/>
-          <BriefMemberProfile name={"Song ha"} position={"manager"} backgroundColor={"#F3B562"}/>
-          <BriefMemberProfile name={"Soon i"} position={"part-timer"} backgroundColor={"#EF6061"}/>
-          <BriefMemberProfile name={"Bung Bung"} position={"partner"} backgroundColor={"#8CBEB1"}/>
+          <BriefMemberProfile name={"Sangsu"} position={"Boss"} backgroundColor={"#5C4B51"} />
+          <BriefMemberProfile name={"Song ha"} position={"manager"} backgroundColor={"#F3B562"} />
+          <BriefMemberProfile name={"Soon i"} position={"part-timer"} backgroundColor={"#EF6061"} />
+          <BriefMemberProfile name={"Bung Bung"} position={"partner"} backgroundColor={"#8CBEB1"} />
           {/* <div className="flex flex-col justify-center items-center bg-[#F3B562] py-12 rounded-t-[75px]"> <div className="bg-white h-24 w-24 rounded-full"></div> <h1 className="flex text-[#FDFDFA] font-bold pt-5 italic">Song-ha</h1> <h1 className="flex text-[#FDFDFA] font-thin italic text-sm">manager</h1>
           </div>
           <div className="flex flex-col justify-center items-center bg-[#EF6061] py-12 rounded-t-[75px]">
@@ -112,10 +152,10 @@ const Home: NextPage = () => {
         </div>
       </div>
       <div className="flex justify-center">
-      <Link href="https://ipd.unist.ac.kr/contact">
-        <a className="px-1 py-2 text-[#F3B562] font-bold">JOIN US</a>
-      </Link>
-    </div>
+        <Link href="https://ipd.unist.ac.kr/contact">
+          <a className="px-1 py-2 text-[#F3B562] font-bold">JOIN US</a>
+        </Link>
+      </div>
     </div>
   )
 }
