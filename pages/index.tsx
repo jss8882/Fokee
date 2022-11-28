@@ -7,6 +7,7 @@ import BriefMemberProfile from '../components/BriefMemberProfile';
 import BriefCapsuleInfo from '../components/BriefCapsuleInfo';
 import { AiFillSetting } from 'react-icons/ai';
 import { Capsule } from '@prisma/client';
+import React from 'react'
 
 interface CapsuleResponse {
   ok:boolean;
