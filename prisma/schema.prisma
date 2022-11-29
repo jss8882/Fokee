@@ -3,7 +3,6 @@
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["referentialIntegrity"]
-
 }
 
 datasource db {
@@ -12,10 +11,11 @@ datasource db {
   referentialIntegrity = "prisma"
 }
 
-model Capsule{
+model Capsule {
   id             Int      @id @default(autoincrement())
-  brand          String     
+  brand          String
   capsuleName    String
+<<<<<<< HEAD
 <<<<<<< HEAD
   flavor         String?
   body           Int?
@@ -28,13 +28,35 @@ model Capsule{
   body           Int
   acidy          Int
 =======
+=======
+  flavor         String?
+>>>>>>> 29737310d4de46dae608d52826ea3db50f929376
   body           Int?
   acidy          Int?
->>>>>>> JYfront
+  color          String?
+  inStock        Boolean
+  imageURL       String   @db.LongText
+  imageBase64    String   @db.LongText
   recommendation String
+<<<<<<< HEAD
   color          String
 >>>>>>> 8962bfde4323b3fbe63cf5483a5240d5524520fe
   url            String
+=======
+  url            String   @db.LongText
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+// 이메일은 유니크해야함 @unique
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  firstName String
+  lastName  String
+  position  String
+>>>>>>> 29737310d4de46dae608d52826ea3db50f929376
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

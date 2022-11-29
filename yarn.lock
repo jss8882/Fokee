@@ -184,47 +184,6 @@
   dependencies:
     "defer-to-connect" "^1.0.1"
 
-"@tailwindcss/postcss7-compat@^2.2.17":
-  "integrity" "sha512-3h2svqQAqYHxRZ1KjsJjZOVTQ04m29LjfrLjXyZZEJuvUuJN+BCIF9GI8vhE1s0plS0mogd6E6YLg6mu4Wv/Vw=="
-  "resolved" "https://registry.npmjs.org/@tailwindcss/postcss7-compat/-/postcss7-compat-2.2.17.tgz"
-  "version" "2.2.17"
-  dependencies:
-    "arg" "^5.0.1"
-    "autoprefixer" "^9"
-    "bytes" "^3.0.0"
-    "chalk" "^4.1.2"
-    "chokidar" "^3.5.2"
-    "color" "^4.0.1"
-    "cosmiconfig" "^7.0.1"
-    "detective" "^5.2.0"
-    "didyoumean" "^1.2.2"
-    "dlv" "^1.1.3"
-    "fast-glob" "^3.2.7"
-    "fs-extra" "^10.0.0"
-    "glob-parent" "^6.0.1"
-    "html-tags" "^3.1.0"
-    "is-color-stop" "^1.1.0"
-    "is-glob" "^4.0.1"
-    "lodash" "^4.17.21"
-    "lodash.topath" "^4.5.2"
-    "modern-normalize" "^1.1.0"
-    "node-emoji" "^1.11.0"
-    "normalize-path" "^3.0.0"
-    "object-hash" "^2.2.0"
-    "postcss" "^7"
-    "postcss-functions" "^3"
-    "postcss-js" "^2"
-    "postcss-load-config" "^3.1.0"
-    "postcss-nested" "^4"
-    "postcss-selector-parser" "^6.0.6"
-    "postcss-value-parser" "^4.1.0"
-    "pretty-hrtime" "^1.0.3"
-    "purgecss" "^4.0.3"
-    "quick-lru" "^5.1.1"
-    "reduce-css-calc" "^2.1.8"
-    "resolve" "^1.20.0"
-    "tmp" "^0.2.1"
-
 "@types/eslint-scope@^3.7.3":
   "integrity" "sha512-PB3ldyrcnAicT35TWPs5IcwKD8S333HMaa2VVv4+wdvebJkjWuW/xESoB8IwRcog8HYVYamb1g/R31Qv5Bx03g=="
   "resolved" "https://registry.npmjs.org/@types/eslint-scope/-/eslint-scope-3.7.3.tgz"
@@ -613,18 +572,6 @@
   "integrity" "sha512-eBvWn1lvIApYMhzQMsu9ciLfkBY499mFZlNqG+/9WR7PVlroQw0vG30cOQQbaKz3sCEc44TAOu2ykzqXSNnwag=="
   "resolved" "https://registry.npmjs.org/ast-types-flow/-/ast-types-flow-0.0.7.tgz"
   "version" "0.0.7"
-
-"autoprefixer@^10.4.7":
-  "integrity" "sha512-ypHju4Y2Oav95SipEcCcI5J7CGPuvz8oat7sUtYj3ClK44bldfvtvcxK6IEK++7rqB7YchDGzweZIBG+SD0ZAA=="
-  "resolved" "https://registry.npmjs.org/autoprefixer/-/autoprefixer-10.4.7.tgz"
-  "version" "10.4.7"
-  dependencies:
-    "browserslist" "^4.20.3"
-    "caniuse-lite" "^1.0.30001335"
-    "fraction.js" "^4.2.0"
-    "normalize-range" "^0.1.2"
-    "picocolors" "^1.0.0"
-    "postcss-value-parser" "^4.2.0"
 
 "autoprefixer@^9":
   "integrity" "sha512-eM9d/swFopRt5gdJ7jrpCwgvEMIayITpojhkkSMRsFHYuH5bkSQ4p/9qTEHtmNudUZh22Tehu7I6CxAW0IXTKA=="
@@ -2202,15 +2149,7 @@
   "resolved" "https://registry.npmjs.org/neo-async/-/neo-async-2.6.2.tgz"
   "version" "2.6.2"
 
-"next-images@^1.8.4":
-  "integrity" "sha512-E6JV+aMxeUCh8A+cwn1xgmlh/zINSW4JC/XLNbM+PWQd5LBdfB+m1IDCAfNnGOKMo96kzw+4LsKxnX/Kldw78Q=="
-  "resolved" "https://registry.npmjs.org/next-images/-/next-images-1.8.4.tgz"
-  "version" "1.8.4"
-  dependencies:
-    "file-loader" "^6.2.0"
-    "url-loader" "^4.1.0"
-
-"next@^12.1.6", "next@>=10.2.0":
+"next@>=10.2.0", "next@12.1.6":
   "integrity" "sha512-cebwKxL3/DhNKfg9tPZDQmbRKjueqykHHbgaoG4VBRH3AHQJ2HO0dbKFiS1hPhe1/qgc2d/hFeadsbPicmLD+A=="
   "resolved" "https://registry.npmjs.org/next/-/next-12.1.6.tgz"
   "version" "12.1.6"
@@ -2573,7 +2512,11 @@
     "picocolors" "^0.2.1"
     "source-map" "^0.6.1"
 
+<<<<<<< HEAD
 "postcss@^8.0.0", "postcss@^8.1.0", "postcss@^8.2.14", "postcss@^8.3.3", "postcss@^8.3.5", "postcss@^8.4.14", "postcss@>=8.0.9":
+=======
+"postcss@^8.1.0", "postcss@^8.2.14", "postcss@^8.3.3", "postcss@^8.3.5", "postcss@^8.4.12", "postcss@>=8.0.9":
+>>>>>>> 29737310d4de46dae608d52826ea3db50f929376
   "integrity" "sha512-E398TUmfAYFPBSdzgeieK2Y1+1cpdxJx8yXbK/m57nRhKSmk1GB2tO4lbLBtlkfPQTDKfe4Xqv1ASWPpayPEig=="
   "resolved" "https://registry.npmjs.org/postcss/-/postcss-8.4.14.tgz"
   "version" "8.4.14"
@@ -2684,7 +2627,7 @@
     "minimist" "^1.2.0"
     "strip-json-comments" "~2.0.1"
 
-"react-dom@^17.0.2 || ^18.0.0-0", "react-dom@^18.1.0":
+"react-dom@^17.0.2 || ^18.0.0-0", "react-dom@18.1.0":
   "integrity" "sha512-fU1Txz7Budmvamp7bshe4Zi32d0ll7ect+ccxNu9FlObT605GOEB8BfO4tmRJ39R5Zj831VCpvQ05QPBW5yb+w=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-18.1.0.tgz"
   "version" "18.1.0"
@@ -2697,17 +2640,12 @@
   "resolved" "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.31.3.tgz"
   "version" "7.31.3"
 
-"react-icons@^4.4.0":
-  "integrity" "sha512-fSbvHeVYo/B5/L4VhB7sBA1i2tS8MkT0Hb9t2H1AVPkwGfVHLJCqyr2Py9dKMxsyM63Eng1GkdZfbWj+Fmv8Rg=="
-  "resolved" "https://registry.npmjs.org/react-icons/-/react-icons-4.4.0.tgz"
-  "version" "4.4.0"
-
 "react-is@^16.13.1":
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   "version" "16.13.1"
 
-"react@*", "react@^16.8.0 || ^17 || ^18", "react@^17.0.2 || ^18.0.0-0", "react@^18.1.0", "react@>= 16", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0":
+"react@*", "react@^16.8.0 || ^17 || ^18", "react@^17.0.2 || ^18.0.0-0", "react@^18.1.0", "react@>= 16", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@18.1.0":
   "integrity" "sha512-4oL8ivCz5ZEPyclFQXaNksK3adutVS8l2xzZU0cqEFrE9Sb7fC0EFK5uEk74wIreL1DERyjvsU915j1pcT2uEQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.1.0.tgz"
   "version" "18.1.0"
@@ -3043,6 +2981,7 @@
   "resolved" "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
   "version" "1.0.0"
 
+<<<<<<< HEAD
 "tailwindcss@^3.0.24":
   "integrity" "sha512-PRJNYdSIthrb8hjmAyymEyEN8Yo61TMXpzyFUpxULeeyRn3Y3gpvuw6FlRTKrJvK7thSGKRnhT36VovVx4WeMA=="
   "resolved" "https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.1.3.tgz"
@@ -3071,6 +3010,8 @@
     "quick-lru" "^5.1.1"
     "resolve" "^1.22.0"
 
+=======
+>>>>>>> 29737310d4de46dae608d52826ea3db50f929376
 "tapable@^2.1.1", "tapable@^2.2.0":
   "integrity" "sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ=="
   "resolved" "https://registry.npmjs.org/tapable/-/tapable-2.2.1.tgz"

@@ -97,56 +97,45 @@ export default upload;
 =======
 import type { NextPage } from 'next'
 import styles from '../styles/Home.module.css'
-<<<<<<< HEAD
+import {useForm} from "react-hook-form"
+import React from 'react'
 
-const upload: NextPage = () => {
-    return (
-        <div className={styles.container}>
-            캡슐정보를 입력해주세요
-            <form>
-
-                <div>
-                    <label>
-                        캡슐명
-                    </label>
-                    <input />
-                </div>
-
-
-=======
-import { useForm } from "react-hook-form"
-import "tailwindcss/tailwind.css";
-
-interface uploadFormType {
-    capsuleName: string;
-    brand: string;
-    flavor?: string;
-    body?: number;
-    acidy?: number;
-    receipt: string;
-    URL: string;
-    color: string;
+interface UploadInputFormType {
+    brand:string;
+    capsuleName:string;
+    flavor?:string;
+    body?:number;
+    acidy?:number;
+    color:string;
+    recommendation:string;
+    url:string
 }
 
-const Upload: NextPage = () => {
-    const { watch, register, handleSubmit, reset } = useForm()
-    //console.log(watch())
 
-    const onValid = (data: any) => {
-        fetch("/api/capsule", {
-            method: "POST",
-            body: JSON.stringify(data),
+const Upload: NextPage = () => {
+
+    const {register, watch,handleSubmit, reset} = useForm()
+    // console.log(watch())
+
+    const onValid = (data:UploadInputFormType) =>{
+        console.log(data)
+
+        fetch("api/capsule",{
+            method:"POST",
+            body:JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json"
             }
         })
-        reset()
+
     }
 
     return (
         <div className={styles.container}>
-            캡슐정보 입력해!!!!!!!!!!!!!!!!!!
-            <form>
+            캡슐 정보를 입력하세요
+            <form
+                onSubmit={handleSubmit(onValid)}
+            >
                 <div>
                     <label>
                         캡슐이름
@@ -171,49 +160,25 @@ const Upload: NextPage = () => {
                         {...register("flavor")}
                     />
                 </div>
->>>>>>> JYfront
                 <div>
                     <label>
                         산미
                     </label>
                     <input
-<<<<<<< HEAD
-                        placeholder='산미를 입력주세요'
-                        type="color"
+                        {...register("acidy")}
+                        placeholder='산미 정도를 입력해 주세요'
+                        type='number'
                     />
                 </div>
 
-                <button>업로드</button>
-=======
-                        placeholder='산미를 입력해주세요'
-                        type="number"
-                        {...register("acidy")}
-                    />
-                </div>
                 <div>
                     <label>
                         바디감
                     </label>
                     <input
-                        type="number"
                         {...register("body")}
-                    />
-                </div>
-                <div>
-                    <label>
-                        추천하는 레시피
-                    </label>
-                    <input
-                        {...register("receipt")}
-                    />
-                </div>
-                <div>
-                    <label>
-                        구매링크
-                    </label>
-                    <input
-                        type="url"
-                        {...register("URL")}
+                        placeholder='바디감의 정도를 입력해 주세요'
+                        type='number'
                     />
                 </div>
                 <div>
@@ -221,23 +186,38 @@ const Upload: NextPage = () => {
                         캡슐컬러
                     </label>
                     <input
-                        type="color"
                         {...register("color")}
                     />
                 </div>
-                <button
-                    onClick={handleSubmit(onValid)}
-                >
-                    업로드</button>
->>>>>>> JYfront
+                <div>
+                    <label>
+                        추천하는 레시피
+                    </label>
+                    <input
+                        {...register("recommendation")}
+                    />
+                </div>
+                <div>
+                    <label>
+                        구매링크
+                    </label>
+                    <input
+                        {...register("url")}
+                    />
+                </div>
+
+                <button>
+                    업로드
+                </button>
+
             </form>
         </div>
     )
 }
 
-<<<<<<< HEAD
-export default upload;
-=======
 export default Upload
+<<<<<<< HEAD
 >>>>>>> JYfront
 >>>>>>> 8962bfde4323b3fbe63cf5483a5240d5524520fe
+=======
+>>>>>>> 29737310d4de46dae608d52826ea3db50f929376
