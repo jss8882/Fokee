@@ -19,8 +19,8 @@ export interface ResponseType {
 	capsules?:Capsule[]
 }
 
-type Find = "all" | "bybrand" | "instoke";
-type Brand = "starbucks" | "EDIYA" | "굿맛";
+export type Find = "all" | "bybrand" | "instoke";
+export type Brand = "starbucks" | "EDIYA" | "굿맛";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<ResponseType>) {
 	const { headers, body, method} = req;
@@ -30,7 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 	console.log(headers);
 	console.log(method);
 	console.log(body);
-	console.log(find);
+	console.log(find, brand);
 
 	if (req.method === "POST") {
 		const inputCapsule: uploadFormType = req.body;
