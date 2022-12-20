@@ -19,9 +19,9 @@ model Capsule {
   body           Int?
   acidy          Int?
   color          String?
-  inStock        Boolean
-  imageURL       String   @db.LongText
-  imageBase64    String   @db.LongText
+  inStock        Boolean?
+  imageURL       String?   @db.LongText
+  imageBase64    String?   @db.LongText
   recommendation String
   url            String   @db.LongText
   createdAt      DateTime @default(now())
