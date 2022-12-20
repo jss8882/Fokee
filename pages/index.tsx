@@ -1,53 +1,54 @@
-import type { NextPage } from 'next'
+import type { NextPage } from "next";
 import "tailwindcss/tailwind.css";
 import Link from "next/link";
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-import BriefMemberProfile from '../components/BriefMemberProfile';
-import BriefCapsuleInfo from '../components/BriefCapsuleInfo';
-import { AiFillSetting } from 'react-icons/ai';
-import { Capsule } from '@prisma/client';
-import React from 'react'
+import BriefMemberProfile from "../components/BriefMemberProfile";
+import BriefCapsuleInfo from "../components/BriefCapsuleInfo";
+import { AiFillSetting } from "react-icons/ai";
+import { Capsule } from "@prisma/client";
+import React from "react";
+import { ResponseType as CapsuleResponse } from "./api/capsule";
 
-interface CapsuleResponse {
-  ok: boolean;
-  capsules: Capsule[]
-}
 
 const Home: NextPage = () => {
+	const [isCapsuleMode, setIsCapsuleMode] = useState(false);
+	const [capsuleClick, setCapsuleClick] = useState(false);
 
-  const [isCapsuleMode, setIsCapsuleMode] = useState(false);
-  const [capsuleClick, setCapsuleClick] = useState(false);
+	const [capsulesInlab, setCapsulesInlab] = useState<Capsule[]>([]);
+	// const [capsulesInlab, setCapsulesInlab] = useState([11,12])
 
-  const [capsulesInlab, setCapsulesInlab] = useState<Capsule[]>([])
-  // const [capsulesInlab, setCapsulesInlab] = useState([11,12])
+	useEffect(() => {
+		console.log("now we fetch all capsule");
 
-  useEffect(() => {
-    console.log("now we fetch all capsule")
+		fetch("/api/capsule?find=instoke", {
+			method: "GET",
+		})
+			.then((response) => {
+				console.log(response)
 
-    fetch("/api/capsule", {
-      method: "GET",
-    }).then(response => response.json())
-      .then(data => {
-        console.log(data)
-        setCapsulesInlab(data.capsules)
-      })
+				return response.json()
+			})
+			.then((data:CapsuleResponse) => {
+				console.log(data);
+				data.capsules && setCapsulesInlab(data.capsules);
+			});
+	}, []);
+
+	const toogleMode = () => {
+		setIsCapsuleMode((prev) => !prev);
+	};
+
+	const HiddenCapsuleInfo = () => setCapsuleClick(false);
 
 
 
-  }, [])
-
-
-  const toogleMode = () => {
-    setIsCapsuleMode(prev => !prev)
-  }
 
   const capsuleInfoMode = () => {
     //setCapsuleClick()
     //캡슐 버튼 누르면 array번호로 부여
   }
   const ShowCapsuleInfo = () => setCapsuleClick(true)
-  const HiddenCapsuleInfo = () => setCapsuleClick(false)
 
   const visibleBtn =
     "text-[#F3B562] px-2 my-5 font-semibold hover";
@@ -166,4 +167,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default Home;
