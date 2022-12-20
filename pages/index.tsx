@@ -10,7 +10,7 @@ import { Capsule } from '@prisma/client';
 import React from 'react'
 
 interface CapsuleResponse {
-  ok:boolean;
+  ok: boolean;
   capsules: Capsule[]
 }
 
@@ -22,20 +22,20 @@ const Home: NextPage = () => {
   const [capsulesInlab, setCapsulesInlab] = useState<Capsule[]>([])
   // const [capsulesInlab, setCapsulesInlab] = useState([11,12])
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log("now we fetch all capsule")
 
     fetch("/api/capsule", {
-      method:"GET",
-    }).then(response=>response.json())
-    .then(data =>{
-      console.log(data)
-      setCapsulesInlab(data.capsules)
-    })
+      method: "GET",
+    }).then(response => response.json())
+      .then(data => {
+        console.log(data)
+        setCapsulesInlab(data.capsules)
+      })
 
 
 
-  },[])
+  }, [])
 
 
   const toogleMode = () => {
@@ -50,7 +50,7 @@ const Home: NextPage = () => {
   const HiddenCapsuleInfo = () => setCapsuleClick(false)
 
   const visibleBtn =
-    "text-[#F3B562] px-2 my-5 font-semibold";
+    "text-[#F3B562] px-2 my-5 font-semibold hover";
 
   const invisibleBtn =
     "opacity-30 text-[#5C4B51] px-2 my-5 font-semibold";
@@ -64,6 +64,9 @@ const Home: NextPage = () => {
   return (
     <div className="w-full h-full bg-[#F5EFDF]">
       <div className="flex items-center justify-end bg-[#FDFDFA] ">
+        <Link href="/search">
+          <a className="px-1 py-2 text-[#ECC392] text-[20px] font-semibold">SEARCH</a>
+        </Link>
         <Link href="/cart">
           <a className="px-1 py-2 text-[#ECC392] text-[20px] font-semibold">CART</a>
         </Link>
@@ -71,10 +74,12 @@ const Home: NextPage = () => {
           <a className="px-2 py-2 text-[#ECC392] text-[20px] font-light"><AiFillSetting /></a>
         </Link>
       </div>
-      <div
-        className="text-5xl flex justify-center pb-10 text-[#5C4B51] bg-[#FDFDFA]  font-black"
-      >FOKEE(logo사진)
-      </div>
+      <Link href="/">
+        <a
+          className="text-5xl flex justify-center pb-10 text-[#5C4B51] bg-[#FDFDFA]  font-black"
+        >FOKEE
+        </a>
+      </Link>
       <div className="bg-[#F5EFDF] flex justify-center">
         <button
           onClick={() => setIsCapsuleMode(false)}
@@ -90,10 +95,10 @@ const Home: NextPage = () => {
       {!isCapsuleMode ? (
         <div>
           {
-            capsulesInlab.map((capsule,index)=>{
-              console.log("capsule is ",capsule)
-              console.log("index is ",index)
-              return(
+            capsulesInlab.map((capsule, index) => {
+              console.log("capsule is ", capsule)
+              console.log("index is ", index)
+              return (
                 <BriefCapsuleInfo key={index} capsuleColor={capsule.color} capsuleName={capsule.capsuleName} />
               )
 
@@ -152,7 +157,7 @@ const Home: NextPage = () => {
           </div> */}
         </div>
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-centerß">
         <Link href="https://ipd.unist.ac.kr/contact">
           <a className="px-1 py-2 text-[#F3B562] font-bold">JOIN US</a>
         </Link>
