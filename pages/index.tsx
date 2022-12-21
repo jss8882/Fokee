@@ -21,7 +21,7 @@ const Home: NextPage = () => {
 	useEffect(() => {
 		console.log("now we fetch all capsule");
 
-		fetch("/api/capsule?find=bybrand&brand=EDIYA", {
+		fetch("/api/capsule?find=instoke", {
 			method: "GET",
 		})
 			.then((response) => {

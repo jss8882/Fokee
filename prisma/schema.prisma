@@ -20,12 +20,15 @@ model Capsule {
   acidy          Int?
   color          String?
   inStock        Boolean?
-  imageURL       String?   @db.LongText
-  imageBase64    String?   @db.LongText
+  imageURL       String?  @db.LongText
+  imageBase64    String?  @db.LongText
   recommendation String
   url            String   @db.LongText
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
+
+  Cart   Cart? @relation(fields: [cartId], references: [id])
+  cartId Int?
 }
 
 // 이메일은 유니크해야함 @unique
@@ -36,6 +39,15 @@ model User {
   firstName String
   lastName  String
   position  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Cart {
+  id Int @id @default(autoincrement())
+
+  capsules Capsule[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
