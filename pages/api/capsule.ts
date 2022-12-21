@@ -19,7 +19,7 @@ export interface ResponseType {
 	capsules?:Capsule[]
 }
 
-export type Find = "all" | "bybrand" | "instoke";
+export type Find = "all" | "bybrand" | "instock";
 export type Brand = "starbucks" | "EDIYA" | "굿맛";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<ResponseType>) {
@@ -33,6 +33,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 	console.log(find, brand);
 
 	if (req.method === "POST") {
+
+// cosnt b = await client.cart.upsert({
+// 	where:{
+// 		id
+// 	},
+// 	create:{
+// 		data:[
+// 			...
+// 		]
+// 	},
+// 	update:{}
+// })
+
 		const inputCapsule: uploadFormType = req.body;
 		console.log("capsule api");
 		const newCapsule = await client.capsule.create({
@@ -70,13 +83,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 			return res.json({ok: true, capsules: capsulesByBrand})
 		}
 
-		else if(find === "instoke"){
-			const capsulesInStoke = await client.capsule.findMany({
+		else if(find === "instock"){
+			const capsulesInStock = await client.capsule.findMany({
 				where: {
 					inStock: true
 				}
 			})
-			return res.status(200).json({ok: true, capsules: capsulesInStoke})
+			return res.status(200).json({ok: true, capsules: capsulesInStock})
 		}
 
 
