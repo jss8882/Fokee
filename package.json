@@ -19,6 +19,7 @@
     "react-dom": "^18.1.0",
     "react-hook-form": "^7.31.3",
     "react-icons": "^4.7.1",
+    "react-router-dom": "^6.5.0",
     "react-toastify": "^9.1.1",
     "reactstrap": "^9.1.5",
     "use-callback": "^1.0.4",
