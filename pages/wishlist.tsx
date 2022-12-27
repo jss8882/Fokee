@@ -1,9 +1,10 @@
+import { WishListCapsule } from "@prisma/client";
 import { NextPage } from "next";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { wishListUploadType } from "./api/wishlist";
+import { ResponseType, wishCapsule } from "./api/wishlist";
 
-const tempData = [
+const tempData: wishCapsule[] = [
 	{
 		capsuleName: "adfhskhfkj",
 		brand: "pando",
@@ -26,12 +27,27 @@ const tempData = [
 
 const WishList: NextPage = () => {
 	const { register, handleSubmit, reset } = useForm();
+	const [wishCapsules, setWishCapsules] = useState<WishListCapsule[]>();
+
+	useEffect(() => {
+		fetch("/api/wishlist", {
+			method: "GET",
+		})
+			.then((response) => {
+				console.log(response);
+				return response.json();
+			})
+			.then((data: ResponseType) => {
+				console.log(data.wishcapsules);
+				data.wishcapsules && setWishCapsules(data.wishcapsules);
+			});
+	}, []);
 
 	const onSubmit = (data: any) => {
 		const capsules = tempData.slice(0, +data.number);
 		console.log(capsules);
 
-		fetch("/api/wishlist", {
+		fetch("/api/wishlist?mode=push", {
 			method: "POST",
 			body: JSON.stringify(capsules),
 			headers: {
@@ -51,6 +67,12 @@ const WishList: NextPage = () => {
 				</div>
 				<button type="submit">Submit</button>
 			</form>
+			<div>--------</div>
+			{wishCapsules
+				? wishCapsules.map((wishCapsule) => {
+						return <div>{wishCapsule.capsuleName}</div>;
+				  })
+				: console.log("no capsules")}
 		</>
 	);
 };

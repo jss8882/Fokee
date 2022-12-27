@@ -52,11 +52,21 @@ model Cart {
   updatedAt DateTime @updatedAt
 }
 
-model WishList {
-  id          Int      @id @default(autoincrement())
-  capsuleName String
+model WishListCapsule {
+  id          Int       @id @default(autoincrement())
+  capsuleName String    @unique
   brand       String
-  url         String   @db.LongText
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  url         String?   @db.LongText
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  WishList    WishList? @relation(fields: [wishListId], references: [id])
+  wishListId  Int?
+}
+
+model WishList {
+  id        Int               @id @default(autoincrement())
+  email     String            @unique
+  capsules  WishListCapsule[]
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
 }
